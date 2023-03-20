@@ -1,69 +1,76 @@
+import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import MainNav from "./components/MainNav";
 import Task from "./components/Task";
 import Timer from "./components/Timer";
 import { ScrollArea } from "./components/ui/scrollarea";
 
-function App() {
-  const tasks: Task[] = [
-    {
-      id: "1",
-      name: "Complete Math Homework",
-      description: "Complete questions 1-10 in Chapter 5 of the textbook",
-      dueDate: new Date("2023-03-22T18:00:00Z"),
-      repeatDaily: false,
-      duration: 90,
-      completedSubTasks: 10,
-      totalSubTasks: 10,
-      completed: false,
-    },
-    {
-      id: "3",
-      name: "Paint Living Room",
-      description: "Paint the living room walls and ceiling",
-      dueDate: new Date("2023-03-25T12:00:00Z"),
-      repeatDaily: false,
-      duration: 240,
-      completedSubTasks: 1,
-      totalSubTasks: 3,
-      completed: false,
-    },
 
-    {
-      id: "4",
-      name: "Go for a Hike",
-      description: "Hike to the top of a nearby mountain",
-      dueDate: new Date("2023-03-27T10:00:00Z"),
-      repeatDaily: false,
-      duration: 180,
-      completedSubTasks: 2,
-      totalSubTasks: 4,
-      completed: false,
-    },
-    {
-      id: "5",
-      name: "Prepare for Job Interview",
-      description:
-        "Research the company and practice answering interview questions",
-      dueDate: new Date("2023-03-24T16:00:00Z"),
-      repeatDaily: false,
-      duration: 120,
-      completedSubTasks: 2,
-      totalSubTasks: 5,
-      completed: false,
-    },
-    {
-      id: "6",
-      name: "Write Blog Post",
-      description: "Write a blog post on a topic of interest",
-      dueDate: new Date("2023-03-28T23:59:59Z"),
-      repeatDaily: false,
-      duration: 90,
-      completedSubTasks: 1,
-      totalSubTasks: 3,
-      completed: false,
-    },
-  ];
+
+
+function App() {
+
+ const tasks: Task[] = [
+   {
+     id: "1",
+     name: "Complete Math Homework",
+     description: "Complete questions 1-10 in Chapter 5 of the textbook",
+     dueDate: new Date("2023-03-22T18:00:00Z"),
+     repeatDaily: false,
+     duration: 90,
+     completedSubTasks: 10,
+     totalSubTasks: 10,
+     completed: false,
+   },
+   {
+     id: "3",
+     name: "Paint Living Room",
+     description: "Paint the living room walls and ceiling",
+     dueDate: new Date("2023-03-25T12:00:00Z"),
+     repeatDaily: false,
+     duration: 240,
+     completedSubTasks: 1,
+     totalSubTasks: 3,
+     completed: false,
+   },
+
+   {
+     id: "4",
+     name: "Go for a Hike",
+     description: "Hike to the top of a nearby mountain",
+     dueDate: new Date("2023-03-27T10:00:00Z"),
+     repeatDaily: false,
+     duration: 180,
+     completedSubTasks: 2,
+     totalSubTasks: 4,
+     completed: false,
+   },
+   {
+     id: "5",
+     name: "Prepare for Job Interview",
+     description:
+       "Research the company and practice answering interview questions",
+     dueDate: new Date("2023-03-24T16:00:00Z"),
+     repeatDaily: false,
+     duration: 120,
+     completedSubTasks: 2,
+     totalSubTasks: 5,
+     completed: false,
+   },
+   {
+     id: "6",
+     name: "Write Blog Post",
+     description: "Write a blog post on a topic of interest",
+     dueDate: new Date("2023-03-28T23:59:59Z"),
+     repeatDaily: false,
+     duration: 90,
+     completedSubTasks: 1,
+     totalSubTasks: 3,
+     completed: false,
+   },
+ ];
+  
+
 
 
   return (

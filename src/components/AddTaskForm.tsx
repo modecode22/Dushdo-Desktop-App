@@ -3,6 +3,9 @@ import { GiEmberShot } from "react-icons/gi";
 import AddTaskFormSwitch from "./AddTaskFormSwitch";
 import Counter from "./Counter";
 
+
+
+
 const AddTaskForm = () => {
     const [count, setCount] = useState<number>(1);
   const [enabled, setEnabled] = useState<boolean>(false);
@@ -36,7 +39,9 @@ const AddTaskForm = () => {
           </section>
         </section>
 
-        <button className="mt-5 flex justify-center items-center gap-2 rounded-xl w-1/2 h-10 bg-black/80 shadow-sm shadow-black hover:bg-gradient-to-br from-main100 to-main200 duration-100 transition-all hover:shadow-md hover:shadow-main100 ">
+        <button
+          className="mt-5 flex justify-center items-center gap-2 rounded-xl w-1/2 h-10 bg-black/80 shadow-sm shadow-black hover:bg-gradient-to-br from-main100 to-main200 duration-100 transition-all hover:shadow-md hover:shadow-main100 "
+        >
           Add task
           <GiEmberShot />
         </button>

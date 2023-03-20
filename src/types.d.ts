@@ -7,7 +7,7 @@ declare module "*.mp3" {
 interface Task {
   id: string;
   name: string;
-  description?: string;
+  description?: string | null;
   dueDate: Date;
   repeatDaily: boolean;
   duration: number; // in minutes
@@ -16,7 +16,6 @@ interface Task {
   totalSubTasks: number;
   completed: boolean;
 }
-
 interface SubTask {
   id: string;
   name: string;
