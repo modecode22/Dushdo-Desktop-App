@@ -29,9 +29,9 @@ export default function AddTaskFormSwitch({enabled, setEnabled} : Props) {
           flex justify-center items-center text-darkform   pointer-events-none  h-[34px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         >
           {enabled ? (
-            <VscSyncIgnored className="duration-200 transition-all" />
-          ) : (
             <BsArrowRepeat className="duration-200 transition-all" />
+            ) : (
+            <VscSyncIgnored className="duration-200 transition-all" />
           )}
         </span>
       </Switch>

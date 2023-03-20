@@ -3,17 +3,15 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 
 
 interface Props {
-  completedSubTasks: number;
-  totalSubTasks: number;
+  value: number;
 }
 
-const CircleForTask = ({ completedSubTasks , totalSubTasks} : Props) => {
-    const value =  (completedSubTasks * 100)/totalSubTasks 
+const CircleForTask = ({value} : Props) => {
 
   return (
     <>
       <CircularProgressbar
-        className={`fill-white font-bold ${
+        className={` fill-white font-bold ${
           value === 100 ? "stroke-main100" : "stroke-main100/50"
         }  `}
         value={value}

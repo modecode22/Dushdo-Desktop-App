@@ -1,4 +1,3 @@
-"use client"
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { BsFillCalendarEventFill, BsFillCalendarRangeFill, BsFillCalendarWeekFill } from "react-icons/bs";

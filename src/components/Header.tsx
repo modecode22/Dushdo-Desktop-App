@@ -5,7 +5,7 @@ import AddInHeader from "./AddInHeader";
 import SoundBtn from "./SoundBtn";
 const Header = () => {
   return (
-    <header className="z-20 bg-dark200 h-10 shadow-sm shadow-black/10 p-1 px-5 flex justify-between items-center">
+    <header className="col-span-5 z-20 bg-dark200 h-10 shadow-sm shadow-black/10 p-1 px-5 flex justify-between items-center">
       <section className="flex justify-center items-center gap-2">
         <SoundBtn />
         <nav className="ml-5    flex justify-center items-center gap-5">

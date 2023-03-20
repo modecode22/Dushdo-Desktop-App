@@ -1,4 +1,3 @@
-"use client"
 import war from "/Audiomachine-AboveandBeyond.mp3";
 import war1 from "/Audiomachine-AbsoluteMagnitude.mp3";
 import war2 from "/Audiomachine-Apotheosis.mp3";

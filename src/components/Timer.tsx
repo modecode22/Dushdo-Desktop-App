@@ -38,24 +38,27 @@ const progressWidth = 100-(seconds * 100) / session;
 
   return (
     <>
-      <section className="border border-font/10 hover:border-font/50  bg-dark200 h-32 p-2 rounded-xl  duration-100 transition-all group absolute   w-24    bottom-4 right-1/2 left-1/2 -translate-x-[50%]  backdrop-blur-md flex flex-col justify-between">
-        <CircularProgressbar
-          className={`fill-white font-bold text-sm ${
-            progressWidth === 100 ? "stroke-main100" : "stroke-main100/50"
-          }  `}
-          value={progressWidth}
-          strokeWidth={15}
-          text={`${minutes}:${formattedSeconds}`}
-        />
-        <div>
+      <section className="    rounded-xl  duration-200 transition-all group      backdrop-blur-md flex flex-col justify-between ">
+        <div className="p-1">
+          <CircularProgressbar
+            className={`fill-white font-bold text-sm ${
+              progressWidth === 100 ? "stroke-main100" : "stroke-main100/50"
+            }  `}
+            value={progressWidth}
+            strokeWidth={15}
+            text={`${minutes}:${formattedSeconds}`}
+          />
+        </div>
+
+        <div className="  h-16 rounded-xl ">
           {!isRunning ? (
             <button
               className="bottom-9 duration-100 transition-all flex z-30  w-full  h-full  justify-center items-center text-2xl font-bold rounded-full"
               onClick={handleStart}
               disabled={isRunning}
             >
-              <div className=" w-10 h-10 rounded-full  flex justify-center items-center p-2">
-                <BsFillPlayFill className="w-6 h-6" />
+              <div className=" w-16 h-16 rounded-full  flex justify-center items-center p-2">
+                <BsFillPlayFill className="w-16 h-16" />
               </div>
             </button>
           ) : (
@@ -66,7 +69,7 @@ const progressWidth = 100-(seconds * 100) / session;
                   disabled={!isRunning}
                   className="rounded-l-full w-12 h-8 flex justify-center items-center  duration-100 transition-all"
                 >
-                  <TbPlayerPauseFilled />
+                  <TbPlayerPauseFilled className="w-8 h-8" />
                 </button>
               </div>
               <div className=" w-8 rounded-full r flex justify-center items-center p-2">
@@ -74,7 +77,7 @@ const progressWidth = 100-(seconds * 100) / session;
                   className="rounded-l-full w-12 h-8 flex justify-center items-center  duration-100 transition-all"
                   onClick={handleReset}
                 >
-                  <MdOutlineReplayCircleFilled />
+                  <MdOutlineReplayCircleFilled className="w-8 h-8" />
                 </button>{" "}
               </div>
             </section>
