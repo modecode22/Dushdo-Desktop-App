@@ -3,6 +3,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import { MdOutlineReplayCircleFilled } from "react-icons/md";
 import {TbPlayerPauseFilled} from 'react-icons/tb'
 import { BsFillPlayFill } from "react-icons/bs";
+import { FaRedoAlt } from "react-icons/fa";
 const Timer = () => {
   const session = 1500
   const [seconds, setSeconds] = useState(session);
@@ -38,7 +39,7 @@ const progressWidth = 100-(seconds * 100) / session;
 
   return (
     <>
-      <section className="    rounded-xl  duration-200 transition-all group      backdrop-blur-md flex flex-col justify-between ">
+      <section className="      duration-200 transition-all group      backdrop-blur-md flex flex-col justify-between ">
         <div className="p-1">
           <CircularProgressbar
             className={`fill-white font-bold text-sm ${
@@ -50,34 +51,34 @@ const progressWidth = 100-(seconds * 100) / session;
           />
         </div>
 
-        <div className="  h-16 rounded-xl ">
+        <div className=" p-2 h-16 rounded-xl ">
           {!isRunning ? (
             <button
-              className="bottom-9 duration-100 transition-all flex z-30  w-full  h-full  justify-center items-center text-2xl font-bold rounded-full"
+              className=" bg-darkform  active:brightness-110 shadow-sm shadow-black hover:shadow-main100 duration-100 transition-all flex z-30  w-full  h-full  justify-center items-center text-2xl font-bold rounded-full"
               onClick={handleStart}
               disabled={isRunning}
             >
-              <div className=" w-16 h-16 rounded-full  flex justify-center items-center p-2">
-                <BsFillPlayFill className="w-16 h-16" />
+              <div className=" w-full h-full rounded-full  flex justify-center items-center p-2 hover:bg-gradient-to-br from-main100 to-main200">
+                <BsFillPlayFill className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-12 lg:h-12" />
               </div>
             </button>
           ) : (
-            <section className="bottom-9 gap-2 duration-100 transition-all  flex z-30  w-full  h-full  justify-center items-center text-2xl font-bold">
-              <div className=" w-8 rounded-full r flex justify-center items-center p-2">
+            <section className="bg-darkform shadow-sm hover:shadow-main100 shadow-black rounded-full  duration-100 transition-all  flex z-30  w-full  h-full  justify-center items-center text-2xl font-bold">
+              <div className=" w-full h-full rounded-full  flex justify-center items-center ">
                 <button
                   onClick={handlePause}
                   disabled={!isRunning}
-                  className="rounded-l-full w-12 h-8 flex justify-center items-center  duration-100 transition-all"
+                  className="active:brightness-110 rounded-l-full hover:bg-gradient-to-br from-main100 to-main200 w-full  h-full flex justify-center items-center  duration-100 transition-all"
                 >
-                  <TbPlayerPauseFilled className="w-8 h-8" />
+                  <TbPlayerPauseFilled className="w-4 h-4 sm:w-6 sm:h-6  " />
                 </button>
               </div>
-              <div className=" w-8 rounded-full r flex justify-center items-center p-2">
+              <div className=" w-full h-full rounded-full  flex justify-center items-center  hover:bg-gradient-to-br from-main100 to-main200">
                 <button
-                  className="rounded-l-full w-12 h-8 flex justify-center items-center  duration-100 transition-all"
+                  className="active:brightness-110 rounded-r-full hover:bg-gradient-to-br from-main100 to-main200 w-full  h-full flex justify-center items-center  duration-100 transition-all"
                   onClick={handleReset}
                 >
-                  <MdOutlineReplayCircleFilled className="w-8 h-8" />
+                  <FaRedoAlt className="w-4 h-4 sm:w-6 sm:h-6 " />
                 </button>{" "}
               </div>
             </section>

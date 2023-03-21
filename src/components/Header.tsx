@@ -3,11 +3,15 @@ import {FaWarehouse} from "react-icons/fa"
 import { IoMdAnalytics } from "react-icons/io";
 import AddInHeader from "./AddInHeader";
 import SoundBtn from "./SoundBtn";
-const Header = () => {
+interface Props {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const Header = ({open , setOpen}:Props) => {
   return (
     <header className="col-span-5 z-20 bg-dark200 h-10 shadow-sm shadow-black/10 p-1 px-5 flex justify-between items-center">
       <section className="flex justify-center items-center gap-2">
-        <SoundBtn />
+        <SoundBtn open={open} setOpen={setOpen} />
         <nav className="ml-5    flex justify-center items-center gap-5">
           <a className="gap-1 text-font/50 hover:text-font/80 active:hover:text-font/90 duration-100 text-xs font-medium flex justify-center items-center">
             <FaWarehouse />

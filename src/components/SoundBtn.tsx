@@ -3,8 +3,13 @@ import { BsMusicNoteList } from 'react-icons/bs';
 import Sounds from './Sounds';
 import { ScrollArea } from './ui/scrollarea';
 
-const SoundBtn = () => {
-    const [open, setOpen] = useState(false)
+interface Props {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+
+const SoundBtn = ({open, setOpen}:Props) => {
   return (
     <>
       <button
@@ -18,7 +23,7 @@ const SoundBtn = () => {
           Sound
         </div>
       </button>
-      <div
+      {/* <div
         className={`duration-200 transition-all ${
           open ? "left-0" : "-left-32"
         } mt-10 w-28 h-screen fixed  top-0`}
@@ -26,7 +31,7 @@ const SoundBtn = () => {
         <ScrollArea className=" w-28 h-screen absolute left-0 top-0   flex justify-center items-center bg-dark200  ">
           <Sounds />
         </ScrollArea>
-      </div>
+      </div> */}
     </>
   );
 }
