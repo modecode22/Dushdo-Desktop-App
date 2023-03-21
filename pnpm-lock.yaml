@@ -21,12 +21,15 @@ specifiers:
   react-circular-progressbar: ^2.1.0
   react-dom: ^18.2.0
   react-icons: ^4.8.0
+  react-router-dom: ^6.9.0
   tailwind-merge: ^1.10.0
   tailwind-scrollbar: ^3.0.0
   tailwindcss: ^3.2.7
   tailwindcss-animate: ^1.0.5
   typescript: ^4.6.4
   vite: ^4.0.0
+  zod: ^3.21.4
+  zustand: ^4.3.6
 
 dependencies:
   '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
@@ -42,8 +45,11 @@ dependencies:
   react-circular-progressbar: 2.1.0_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.8.0_react@18.2.0
+  react-router-dom: 6.9.0_biqbaboplfbrettd7655fr4n2y
   tailwind-merge: 1.10.0
   tailwindcss-animate: 1.0.5_tailwindcss@3.2.7
+  zod: 3.21.4
+  zustand: 4.3.6_react@18.2.0
 
 devDependencies:
   '@tauri-apps/cli': 1.2.3
@@ -874,6 +880,11 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
+  /@remix-run/router/1.4.0:
+    resolution: {integrity: sha512-BJ9SxXux8zAg991UmT8slpwpsd31K1dHHbD3Ba4VzD+liLQ4WAMSxQp2d2ZPRPfN0jN2NPRowcSSoM7lCaF08Q==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@tauri-apps/api/1.2.0:
     resolution: {integrity: sha512-lsI54KI6HGf7VImuf/T9pnoejfgkNoXveP14pVV7XarrQ46rOejIVJLFqHI9sRReJMGdh2YuCoI3cc/yCWCsrw==}
     engines: {node: '>= 14.6.0', npm: '>= 6.6.0', yarn: '>= 1.19.1'}
@@ -1587,6 +1598,29 @@ packages:
       use-sidecar: 1.1.2_pmekkgnqduwlme35zpnqhenc34
     dev: false
 
+  /react-router-dom/6.9.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-/seUAPY01VAuwkGyVBPCn1OXfVbaWGGu4QN9uj0kCPcTyNYgL1ldZpxZUpRU7BLheKQI4Twtl/OW2nHRF1u26Q==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.4.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 6.9.0_react@18.2.0
+    dev: false
+
+  /react-router/6.9.0_react@18.2.0:
+    resolution: {integrity: sha512-51lKevGNUHrt6kLuX3e/ihrXoXCa9ixY/nVWRLlob4r/l0f45x3SzBvYJe3ctleLUQQ5fVa4RGgJOTH7D9Umhw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.4.0
+      react: 18.2.0
+    dev: false
+
   /react-style-singleton/2.2.1_pmekkgnqduwlme35zpnqhenc34:
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
     engines: {node: '>=10'}
@@ -1793,6 +1827,14 @@ packages:
       tslib: 2.5.0
     dev: false
 
+  /use-sync-external-store/1.2.0_react@18.2.0:
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -1841,3 +1883,23 @@ packages:
   /yaml/1.10.2:
     resolution: {integrity: sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==}
     engines: {node: '>= 6'}
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false
+
+  /zustand/4.3.6_react@18.2.0:
+    resolution: {integrity: sha512-6J5zDxjxLE+yukC2XZWf/IyWVKnXT9b9HUv09VJ/bwGCpKNcaTqp7Ws28Xr8jnbvnZcdRaidztAPsXFBIqufiw==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false

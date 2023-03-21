@@ -1,20 +1,17 @@
-import { useState } from 'react';
 import { BsMusicNoteList } from 'react-icons/bs';
-import Sounds from './Sounds';
-import { ScrollArea } from './ui/scrollarea';
-
-interface Props {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { useSideBarStore } from '../store/store';
 
 
-const SoundBtn = ({open, setOpen}:Props) => {
+
+const SoundBtn = () => {
+
+     const Toggle = useSideBarStore((state) => state.toggle);
+
   return (
     <>
       <button
         onClick={() => {
-          setOpen(!open);
+          Toggle();
         }}
         className="group p-1 relative border border-transparent hover:border-font/20 rounded-full hover:bg-black/60 w-8 h-8 duration-200 active:border-font/50  active:bg-black/80 flex justify-center items-center"
       >

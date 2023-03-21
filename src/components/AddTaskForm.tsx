@@ -12,6 +12,7 @@ const AddTaskForm = () => {
 
 
     return (
+
       <form className="w-full p-2 py-5 gap-2 flex justify-center  flex-col">
         <section className="flex flex-col ">
           <label className="px-3 text-sm font-normal text-font/80">

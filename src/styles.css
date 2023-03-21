@@ -11,6 +11,10 @@
     font-family: sono;
 }
 
+.active{
+  color: #d6d6d6;
+}
+
 .CircularProgressbar {
   width: 100%;
   vertical-align: middle;
