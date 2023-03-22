@@ -6,7 +6,7 @@ This ToDo app is built with Tauri, React, and Tailwind CSS. It uses the Pomodoro
 
 To use this app, you need to have Node.js and Git installed on your computer. Then, follow these steps:
 
-    Clone this repository: git clone https://github.com/your-username/your-repo.git
+    Clone this repository: git clone https://github.com/modecode22/Focalist-Desktop-App
     Install dependencies: pnpm install
     Start the app: pnpm tauri dev
 
