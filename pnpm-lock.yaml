@@ -15,6 +15,7 @@ specifiers:
   autoprefixer: ^10.4.14
   class-variance-authority: ^0.4.0
   clsx: ^1.2.1
+  date-fns: ^2.29.3
   lucide-react: ^0.125.0
   postcss: ^8.4.21
   react: ^18.2.0
@@ -40,6 +41,7 @@ dependencies:
   '@tauri-apps/api': 1.2.0
   class-variance-authority: 0.4.0_typescript@4.9.5
   clsx: 1.2.1
+  date-fns: 2.29.3
   lucide-react: 0.125.0_react@18.2.0
   react: 18.2.0
   react-circular-progressbar: 2.1.0_react@18.2.0
@@ -1178,6 +1180,11 @@ packages:
 
   /csstype/3.1.1:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
+
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
