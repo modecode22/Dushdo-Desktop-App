@@ -1,8 +1,8 @@
-#Focalist Desktop App (Offline)
+# Focalist Desktop App (Offline)
 
 This ToDo app is built with Tauri, React, and Tailwind CSS. It uses the Pomodoro Technique to help you focus on tasks and increase productivity. With this app, you can easily create tasks, set timers, and track your progress. In addition, there is a sound studio feature that allows you to listen to white noise or any thing while you work. The app also has statistics page where you can view your progress and a settings page to customize your experience.
 
-##Getting Started
+## Getting Started
 
 To use this app, you need to have Node.js and Git installed on your computer. Then, follow these steps:
 
@@ -10,7 +10,7 @@ To use this app, you need to have Node.js and Git installed on your computer. Th
     Install dependencies: pnpm install
     Start the app: pnpm tauri dev
 
-##Features
+## Features
 
     -Create tasks 
     -Set Pomodoro timer for each task
@@ -20,14 +20,14 @@ To use this app, you need to have Node.js and Git installed on your computer. Th
     -Statistics page to view progress
     -Settings page to customize experience
 
-##Technologies Used
+## Technologies Used
 
     1.Tauri
     2.React
     3.Tailwind CSS
     4.SQLite
 
-##Contributing
+## Contributing
 
 Thank you for considering contributing to this project! To make the process as smooth as possible for everyone involved, please adhere to the following guidelines:
 
@@ -38,16 +38,16 @@ Thank you for considering contributing to this project! To make the process as s
     -Create a pull request
 
 Please make sure to test your changes thoroughly before submitting a pull request. Also, please ensure that your changes are well-documented and adhere to the existing code standards.
-##To-do
+## To-do
 
     1-Create CRUD operations for SQLite database
     2-Implement statistics page to view progress
     3-Create settings page to customize experience
 
-###License
+### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-###Acknowledgments
+### Acknowledgments
 
     Tauri - https://tauri.studio/
     React - https://reactjs.org/
