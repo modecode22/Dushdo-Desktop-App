@@ -18,7 +18,7 @@ function Home() {
       <section className="w-full h-full flex flex-col items-center p-2 gap-2">
         <ScrollArea className="h-full   w-full flex justify-center items-center rounded-md   p-4 ">
           <main className="flex gap-5 w-full justify-center ">
-            <main className="flex flex-col max-w-md  items-center w-full h-full gap-2">
+            <main className="flex flex-col max-w-md  items-center sm:w-full h-full gap-2">
               <header className="flex justify-between items-center p-2  max-w-md w-full ">
                 <h1 className="font-sans text-xl">Today Tasks</h1>
                 <MainNav />

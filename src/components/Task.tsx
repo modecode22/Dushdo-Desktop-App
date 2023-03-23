@@ -14,17 +14,16 @@ interface TaskOp {
 
 const Task = ({ task, handleDeleteTask }: TaskOp) => {
   const value = (task.completed_subtasks * 100) / task.total_subtasks;
-console.log(task);
 
   return (
-    <section className="relative border border-transparent hover:border-main100/50  group  max-w-xl select-none h-20 p-2 px-4 w-full rounded-xl bg-dark100 flex flex-col justify-between items-center">
+    <section className="relative border border-transparent hover:border-main100/50  group  max-w-xl select-none h-20 p-2 px-4 w-full  rounded-xl bg-dark100 flex flex-col justify-between items-center">
       <header className="w-full flex justify-between  items-center gap-2 ">
         {/* <section className="w-6 h-6 rounded-lg bg-gradient-to-br from-main100 to-main200 flex justify-center items-center">
           <GiAchievement className="w-5 h-5" />
         </section> */}
         <h1>{task.name}</h1>
 
-        <TaskNav id={task.id} handleDeleteTask={handleDeleteTask} />
+        <TaskNav task={task} handleDeleteTask={handleDeleteTask} />
       </header>
       <main className="w-full flex  items-center gap-2 justify-between">
         <div

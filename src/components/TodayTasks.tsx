@@ -7,13 +7,14 @@ import { updateTask } from '../lib/updateTask';
 const TodayTasks = () => {
 
 
-    const { data, isError, isLoading } = useQuery({
+    const { data, isError, isLoading , refetch } = useQuery({
       queryKey: ["tasks"],
       queryFn: () => getAllTasks(),
     });
   async function handleDeleteTask(id: string) {
     await deleteTask(id);
     data?.filter((task) => task.id !== id)
+    refetch()
   }
 
   async function handleUpdateTask(task: Task) {

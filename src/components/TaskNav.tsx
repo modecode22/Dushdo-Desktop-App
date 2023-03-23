@@ -5,16 +5,16 @@ import { GiRocketFlight } from "react-icons/gi";
 import { MdDeleteSweep, MdModeEdit, MdOutlineMoreVert } from "react-icons/md";
 import { deleteTask } from "../lib/dalateTask";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import AddTaskForm from "./AddTaskForm";
+import EditTaskForm from "./EditTaskForm";
 
 
 interface NavTask {
-  id: string;
+  task: TaskResult;
   handleDeleteTask: (id:string)=>void;
 }
 
 
-export default function TaskNav({ id, handleDeleteTask }: NavTask) {
+export default function TaskNav({ task, handleDeleteTask }: NavTask) {
   return (
     <section className="">
       <Menu as="div" className="relative inline-block ">
@@ -56,14 +56,14 @@ export default function TaskNav({ id, handleDeleteTask }: NavTask) {
                     </button>
                   </DialogTrigger>
                   <DialogContent>
-                    <AddTaskForm />
+                    <EditTaskForm task={task} />
                   </DialogContent>
                 </Dialog>
               </Menu.Item>
               <Menu.Item>
                 <button
                   onClick={() => {
-                    handleDeleteTask(id);
+                    handleDeleteTask(task.id);
                   }}
                   className={`hover:bg-gradient-to-br from-main200 to-main100 hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >

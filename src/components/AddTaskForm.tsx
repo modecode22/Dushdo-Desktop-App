@@ -4,11 +4,16 @@ import AddTaskFormSwitch from "./AddTaskFormSwitch";
 import Counter from "./Counter";
 import { UniqueId } from "../lib/utils";
 import { createTask } from "../lib/createTask";
+import { useQuery } from "react-query";
 
 
 
 
 const AddTaskForm = () => {
+
+  const { refetch } = useQuery({
+    queryKey: ["tasks"]
+  });
       const [count, setCount] = useState<number>(4);
     const [enabled, setEnabled] = useState<boolean>(false);
 const  [duration, setDuration] = useState<number>(25)
@@ -46,6 +51,7 @@ const  [duration, setDuration] = useState<number>(25)
      totalSubTasks: count,
      completed: false,
    });
+   refetch();
  }
 
 
