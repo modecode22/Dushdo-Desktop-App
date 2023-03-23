@@ -76,7 +76,7 @@ function TestForDb() {
   
   return (
     <div className="p-5 w-screen h-screen grid grid-rows-2 gap-5">
-      <div className="rounded-lg bg-darkfont/50">
+      <div className="rounded-lg bg-darkfont/50 p-5">
         {updateMode ? (
           <>
             {/* create task */}
@@ -85,11 +85,11 @@ function TestForDb() {
                 e.preventDefault()
                  handleUpdateTask(forUpdate);
               }}
-              className="w-full flex flex-wrap justify-center items-center p-2 gap-5"
+              className="w-full flex flex-wrap justify-center items-center  gap-5"
             >
               <input
                 required
-                defaultValue={forUpdate.id}
+                value={forUpdate.id}
                 placeholder="task id"
                 className="px-2 rounded-md h-10 bg-darkform "
                 type="text"
@@ -100,7 +100,7 @@ function TestForDb() {
 
               <input
                 required
-                defaultValue={forUpdate.name}
+                value={forUpdate.name}
                 placeholder="task name"
                 className="px-2 rounded-md h-10 bg-darkform "
                 type="text"
@@ -111,7 +111,7 @@ function TestForDb() {
 
               <input
                 placeholder="task desc"
-                defaultValue={forUpdate.description??""}
+                value={forUpdate.description??""}
                 className="px-2 rounded-md h-10 bg-darkform "
                 type="text"
                 onChange={(e) => {
@@ -130,7 +130,7 @@ function TestForDb() {
             {/* create task */}
             <form
               onSubmit={handleCreateTask}
-              className="w-full flex flex-wrap justify-center items-center p-2 gap-5"
+              className=" w-full flex flex-wrap justify-center items-center  gap-5"
             >
               <input
                 required
@@ -187,6 +187,8 @@ function TestForDb() {
                 onClick={() => {
                   setUpdateMode(true);
                   setForUpdate(t);
+                  console.log(t);
+                  
                 }}
                 className="bg-emerald-500 p-1 rounded-md h-7 hover:bg-emerald-600 active:bg-emerald-400"
               >
