@@ -5,21 +5,26 @@ import { MdDeleteSweep } from "react-icons/md";
 import CircleForTask from "./CircleForTask";
 import TaskNav from "./TaskNav";
 
-const Task = ({task}:{task:Task}) => {
+interface TaskOp {
+  task: TaskResult;
+  handleDeleteTask: (id: string) => void;
+}
 
 
-    const value = (task.completedSubTasks * 100) / task.totalSubTasks; 
 
+const Task = ({ task, handleDeleteTask }: TaskOp) => {
+  const value = (task.completed_subtasks * 100) / task.total_subtasks;
+console.log(task);
 
   return (
-    <section className="relative   group  max-w-xl select-none h-20 p-2 px-4 w-full rounded-xl bg-dark100 flex flex-col justify-between items-center">
+    <section className="relative border border-transparent hover:border-main100/50  group  max-w-xl select-none h-20 p-2 px-4 w-full rounded-xl bg-dark100 flex flex-col justify-between items-center">
       <header className="w-full flex justify-between  items-center gap-2 ">
         {/* <section className="w-6 h-6 rounded-lg bg-gradient-to-br from-main100 to-main200 flex justify-center items-center">
           <GiAchievement className="w-5 h-5" />
         </section> */}
         <h1>{task.name}</h1>
 
-        <TaskNav />
+        <TaskNav id={task.id} handleDeleteTask={handleDeleteTask} />
       </header>
       <main className="w-full flex  items-center gap-2 justify-between">
         <div
@@ -29,7 +34,7 @@ const Task = ({task}:{task:Task}) => {
               : "text-font/50"
           } text-font/50 text-xs font-bold`}
         >
-          {task.completedSubTasks}/{task.totalSubTasks} Done
+          {task.completed_subtasks}/{task.total_subtasks} Done
         </div>
 
         <div className="w-5 relative flex justify-center items-center">
@@ -44,6 +49,6 @@ const Task = ({task}:{task:Task}) => {
       </main>
     </section>
   );
-}
+};
 
 export default Task

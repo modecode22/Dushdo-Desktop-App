@@ -19,3 +19,14 @@ interface Task {
   totalSubTasks: number;
   completed: boolean;
 }
+interface TaskResult {
+  id: string;
+  name: string;
+  description: string;
+  due_date: Date;
+  repeatDaily: boolean;
+  duration: number;
+  completed_subtasks: number;
+  total_subtasks: number;
+  completed: boolean;
+}

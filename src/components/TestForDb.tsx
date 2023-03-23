@@ -40,7 +40,8 @@ function TestForDb() {
     async function fetchTasks() {
     await setupDatabase()
       const tasks = await getAllTasks();
-      setTasks(tasks);
+      //!i commented it for avoiding problems with type checking
+      // setTasks(tasks);
     }
     fetchTasks();
   }, []);

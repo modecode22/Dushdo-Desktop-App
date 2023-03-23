@@ -8,12 +8,19 @@ import Home from "./routes/home";
 import Data from "./routes/data";
 import Settings from "./routes/settings";
 import TestForDb from "./components/TestForDb";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "react-query";
+import {setupDatabase} from './lib/db'
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Rout />,
     errorElement: <ErrorPage />,
+    loader:setupDatabase,
     children: [
       {
         path: "/",
@@ -34,7 +41,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    {/* <TestForDb /> */}
-          <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      {/* <TestForDb /> */}
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

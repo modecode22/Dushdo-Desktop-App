@@ -2,23 +2,71 @@ import { useState } from "react";
 import { GiEmberShot } from "react-icons/gi";
 import AddTaskFormSwitch from "./AddTaskFormSwitch";
 import Counter from "./Counter";
+import { UniqueId } from "../lib/utils";
+import { createTask } from "../lib/createTask";
 
 
 
 
 const AddTaskForm = () => {
-    const [count, setCount] = useState<number>(4);
-  const [enabled, setEnabled] = useState<boolean>(true);
+      const [count, setCount] = useState<number>(4);
+    const [enabled, setEnabled] = useState<boolean>(false);
+const  [duration, setDuration] = useState<number>(25)
+      const [task, setTask] = useState<Task>({
+        completed: false,
+        completedSubTasks: 0,
+        dueDate: new Date(),
+        duration: duration,
+        id: UniqueId(),
+        name: "",
+        repeatDaily: enabled,
+        totalSubTasks: count,
+        description: "",
+      });
+
+
+
+
+ async function handleCreateTask(event: React.FormEvent<HTMLFormElement>) {
+   event.preventDefault();
+   const thetask = await createTask(task);
+  //  setTasks([...tasks, task]);
+  setCount(4)
+  setEnabled(false)
+  //todo make duration changeable
+  setDuration(25)
+   setTask({
+     id: UniqueId(),
+     name: "",
+     description: "",
+     dueDate: new Date(),
+     repeatDaily: enabled,
+     duration: duration,
+     completedSubTasks: 0,
+     totalSubTasks: count,
+     completed: false,
+   });
+ }
+
+
+
+
 
 
     return (
-
-      <form className="w-full p-2 py-5 gap-2 flex justify-center  flex-col">
+      <form
+        onSubmit={handleCreateTask}
+        className="w-full p-2 py-5 gap-2 flex justify-center  flex-col"
+      >
         <section className="flex flex-col ">
           <label className="px-3 text-sm font-normal text-font/80">
             Task name :
           </label>
           <input
+            onChange={(e) => {
+              setTask({ ...task, name: e.target.value });
+            }}
+            value={task.name}
             placeholder="write your task name"
             type="text"
             className="placeholder:text-font/20 focus:placeholder:text-font/50 w-full h-10 p-1 px-2 rounded-lg bg-black/40 border-2 outline-none border-main100/20 focus:border-main100"
@@ -35,7 +83,7 @@ const AddTaskForm = () => {
             Repeat :
           </label>
           <div className="px-5">
-          <AddTaskFormSwitch enabled={enabled} setEnabled={setEnabled} />
+            <AddTaskFormSwitch enabled={enabled} setEnabled={setEnabled} />
           </div>
         </section>
 
