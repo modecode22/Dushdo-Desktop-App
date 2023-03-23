@@ -7,6 +7,7 @@ import ErrorPage from "./error-page";
 import Home from "./routes/home";
 import Data from "./routes/data";
 import Settings from "./routes/settings";
+import TestForDb from "./components/TestForDb";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-          <RouterProvider router={router} />
+    <TestForDb />
+          {/* <RouterProvider router={router} /> */}
   </React.StrictMode>
 );

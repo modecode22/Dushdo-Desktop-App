@@ -27,6 +27,7 @@ specifiers:
   tailwind-scrollbar: ^3.0.0
   tailwindcss: ^3.2.7
   tailwindcss-animate: ^1.0.5
+  tauri-plugin-sql-api: github:tauri-apps/tauri-plugin-sql
   typescript: ^4.6.4
   vite: ^4.0.0
   zod: ^3.21.4
@@ -50,6 +51,7 @@ dependencies:
   react-router-dom: 6.9.0_biqbaboplfbrettd7655fr4n2y
   tailwind-merge: 1.10.0
   tailwindcss-animate: 1.0.5_tailwindcss@3.2.7
+  tauri-plugin-sql-api: github.com/tauri-apps/tauri-plugin-sql/3a8b9a6b244df7512bc5ef8692cebdedbab3ccce
   zod: 3.21.4
   zustand: 4.3.6_react@18.2.0
 
@@ -1909,4 +1911,12 @@ packages:
     dependencies:
       react: 18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
+    dev: false
+
+  github.com/tauri-apps/tauri-plugin-sql/3a8b9a6b244df7512bc5ef8692cebdedbab3ccce:
+    resolution: {tarball: https://codeload.github.com/tauri-apps/tauri-plugin-sql/tar.gz/3a8b9a6b244df7512bc5ef8692cebdedbab3ccce}
+    name: tauri-plugin-sql-api
+    version: 0.0.0
+    dependencies:
+      '@tauri-apps/api': 1.2.0
     dev: false

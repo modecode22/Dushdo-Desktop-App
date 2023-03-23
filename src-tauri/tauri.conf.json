@@ -1,4 +1,8 @@
 {
+
+  "plugins": {  
+    "name": "tauri-plugin-sql"
+  },
   "build": {
     "beforeDevCommand": "pnpm dev",
     "beforeBuildCommand": "pnpm build",
