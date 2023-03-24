@@ -70,3 +70,54 @@ export const useSettingStore = create<SettingsState>()(
     }
   )
 );
+
+
+
+
+
+interface TimerState {
+  currentTask: TaskResult|null;
+  numberOfSessions: number;
+  TimerState: "pomodoro" | "shortBreak" | "longBreak";
+  finish: ({
+    numberOfSessions,
+    TimerState,
+  }: {
+    numberOfSessions: number;
+    TimerState: "pomodoro" | "shortBreak" | "longBreak";
+  }) => void;
+}
+
+
+
+
+export const useCurrentStore = create<TimerState>()(
+  persist(
+    (set) => {
+      return {
+        currentTask:null ,
+        TimerState: "pomodoro",
+        numberOfSessions: getSettings().numPomodorosBeforeLongBreak,
+        finish: ({
+          numberOfSessions,
+          TimerState,
+        }: {
+          numberOfSessions: number;
+          TimerState: "pomodoro" | "shortBreak" | "longBreak";
+        }) => {
+          set({
+            numberOfSessions,
+            TimerState,
+          });
+        },
+      };
+    },
+    {
+      name: "currentTask",
+    }
+  )
+);
+
+
+
+

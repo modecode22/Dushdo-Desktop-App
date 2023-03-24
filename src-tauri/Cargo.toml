@@ -1,8 +1,8 @@
 [package]
-name = "Focalist-react"
+name = "Dushdo"
 version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "best todo App"
+authors = ["moncef aissaoui"]
 license = ""
 repository = ""
 edition = "2021"

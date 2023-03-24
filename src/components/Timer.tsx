@@ -9,9 +9,22 @@ const Timer = () => {
   const settings = useSettingStore(state=>state.settings)
 
 
-  const session = 1500
+
+  const session = 60*settings.pomodoroLength
+  const ShortBreak = 60 * settings.shortBreakLength;
+  const LongBreak = 60 * settings.longBreakLength;
+  const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak
+ 
+  // todo see if this is good for ux or not
+  // const autoStartNextPomodoro = settings.autoStartNextPomodoro;
+  
+  
   const [seconds, setSeconds] = useState(session);
   const [isRunning, setIsRunning] = useState(false);
+const [sessionType, setSessionType] = useState<
+  "pomodoro" | "shortBreak" | "longBreak"
+>("pomodoro"); // can be "pomodoro", "shortBreak", or "longBreak"
+const [completedSessions, setCompletedSessions] = useState(0);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined;
