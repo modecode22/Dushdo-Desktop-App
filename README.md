@@ -1,4 +1,4 @@
-# Focalist Desktop App (Offline)
+# Dushdo Desktop App (Offline)
 
 This ToDo app is built with Tauri, React, and Tailwind CSS. It uses the Pomodoro Technique to help you focus on tasks and increase productivity. With this app, you can easily create tasks, set timers, and track your progress. In addition, there is a sound studio feature that allows you to listen to white noise or any thing while you work. The app also has statistics page where you can view your progress and a settings page to customize your experience.
 
@@ -6,7 +6,7 @@ This ToDo app is built with Tauri, React, and Tailwind CSS. It uses the Pomodoro
 
 To use this app, you need to have Node.js and Git installed on your computer. Then, follow these steps:
 
-    Clone this repository: git clone https://github.com/modecode22/Focalist-Desktop-App
+    Clone this repository: git clone https://github.com/modecode22/Dushdo-Desktop-App
     Install dependencies: pnpm install
     Start the app: pnpm tauri dev
 
