@@ -1,12 +1,14 @@
 import { MdAdd } from 'react-icons/md';
 import AddTaskForm from './AddTaskForm';
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
+import { useRef, useState } from 'react';
 
 const AddInHeader = () => {
+  const close = useRef(null)
   return (
     <>
       <Dialog>
-        <DialogTrigger>
+        <DialogTrigger ref={close} >
           <button className="w-8 h-8 group relative p-1   flex justify-center items-center">
             {/* أضف مهمة جديدة */}
             <MdAdd className="w-6 h-6 bg-gradient-to-br from-main100 to-main200 duration-200 group-hover:bg-gradient-to-r rounded-full" />
@@ -16,7 +18,7 @@ const AddInHeader = () => {
           </button>
         </DialogTrigger>
         <DialogContent>
-          <AddTaskForm />
+          <AddTaskForm close={close} />
         </DialogContent>
       </Dialog>
     </>

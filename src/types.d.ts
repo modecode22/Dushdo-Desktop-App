@@ -30,3 +30,12 @@ interface TaskResult {
   total_subtasks: number;
   completed: boolean;
 }
+
+interface Settings {
+  pomodoroLength: number; // The length of a pomodoro session in minutes
+  shortBreakLength: number; // The length of a short break in minutes
+  longBreakLength: number; // The length of a long break in minutes
+  numPomodorosBeforeLongBreak: number; // The number of pomodoros before a long break
+  autoStartNextPomodoro: boolean; // Whether the app should automatically start the next pomodoro after a break
+  // darkMode: boolean; //todo Whether the app should use a dark color scheme
+}

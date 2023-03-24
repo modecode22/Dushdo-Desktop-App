@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
-import { MdOutlineReplayCircleFilled } from "react-icons/md";
 import {TbPlayerPauseFilled} from 'react-icons/tb'
 import { BsFillPlayFill } from "react-icons/bs";
 import { FaRedoAlt } from "react-icons/fa";
+import { useSettingStore } from "../store/store";
 const Timer = () => {
+
+  const settings = useSettingStore(state=>state.settings)
+
+
   const session = 1500
   const [seconds, setSeconds] = useState(session);
   const [isRunning, setIsRunning] = useState(false);

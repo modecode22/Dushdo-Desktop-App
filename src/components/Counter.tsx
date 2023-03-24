@@ -1,25 +1,35 @@
 import { Dispatch, SetStateAction } from "react";
 import {AiFillCaretDown,AiFillCaretUp} from 'react-icons/ai'
 interface Props {
-    max: number;
+  //max number
+  max: number;
+  // the default number
   count: number;
+  //add or rmv by number
+  by?: number;
+  //min number
+  min?: number;
+  // set number function
   setCount: Dispatch<SetStateAction<number>>;
 }
 
-const Counter = ({ count, setCount, max }: Props) => {
+const Counter = ({ count, setCount, max , by = 1 , min = 1 }: Props) => {
+  
+  
+  
   const increment = () => {
     if (count >= max) {
-      setCount(1);
+      setCount(min);
     } else {
-      setCount(count + 1);
+      setCount(count + by);
     }
   };
 
   const decrement = () => {
-    if (count <= 1) {
+    if (count <= min) {
       setCount(max);
     } else {
-      setCount(count - 1);
+      setCount(count - by);
     }
   };
 

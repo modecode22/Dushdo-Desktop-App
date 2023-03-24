@@ -1,4 +1,3 @@
-import React from 'react'
 import { getAllTasks } from '../lib/getAllTasks';
 import {useQuery} from "react-query"
 import Task from './Task';
