@@ -17,7 +17,7 @@ const db = await Database.load("sqlite:test.db");
     [
       task.name,
       task.description,
-      task.dueDate.toISOString(),
+      task.dueDate,
       task.repeatDaily ? 1 : 0,
       task.duration,
       task.completedSubTasks,

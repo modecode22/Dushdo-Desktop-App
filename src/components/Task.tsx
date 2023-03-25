@@ -6,14 +6,14 @@ import CircleForTask from "./CircleForTask";
 import TaskNav from "./TaskNav";
 
 interface TaskOp {
-  task: TaskResult;
+  task: Task;
   handleDeleteTask: (id: string) => void;
 }
 
 
 
 const Task = ({ task, handleDeleteTask }: TaskOp) => {
-  const value = (task.completed_subtasks * 100) / task.total_subtasks;
+  const value = (task.completedSubTasks * 100) / task.totalSubTasks;
 
   return (
     <section className="relative border border-transparent hover:border-main100/50  group  max-w-xl select-none h-20 p-2 px-4 w-full  rounded-xl bg-dark100 flex flex-col justify-between items-center">
@@ -33,7 +33,7 @@ const Task = ({ task, handleDeleteTask }: TaskOp) => {
               : "text-font/50"
           } text-font/50 text-xs font-bold`}
         >
-          {task.completed_subtasks}/{task.total_subtasks} Done
+          {task.completedSubTasks}/{task.totalSubTasks} Done
         </div>
 
         <div className="w-5 relative flex justify-center items-center">

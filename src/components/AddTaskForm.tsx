@@ -6,6 +6,7 @@ import { UniqueId } from "../lib/utils";
 import { createTask } from "../lib/createTask";
 import { useQuery } from "react-query";
 import {} from "@radix-ui/react-dialog";
+import { useSettingStore } from "../store/store";
 
 
 
@@ -15,11 +16,13 @@ interface Props {
 
 const AddTaskForm = ({ close }:Props) => {
   const { refetch } = useQuery({
-    queryKey: ["tasks"],
+    queryKey: ["todaytasks"],
   });
+
+  const settings = useSettingStore(state=> state.settings)
   const [count, setCount] = useState<number>(4);
   const [enabled, setEnabled] = useState<boolean>(false);
-  const [duration, setDuration] = useState<number>(25);
+  const [duration, setDuration] = useState<number>(settings.pomodoroLength);
   const [task, setTask] = useState<Task>({
     completed: false,
     completedSubTasks: 0,
@@ -81,13 +84,23 @@ const AddTaskForm = ({ close }:Props) => {
           className="placeholder:text-font/20 focus:placeholder:text-font/50 w-full h-10 p-1 px-2 rounded-lg bg-black/40 border-2 outline-none border-main100/20 focus:border-main100"
         />
       </section>
-      <section className="px-2 flex gap-5 justify-between pr-10 items-center ">
+      <section
+        onClick={() => {
+          setTask({ ...task, totalSubTasks: count });
+        }}
+        className="px-2 flex gap-5 justify-between pr-10 items-center "
+      >
         <label className="px-1 text-sm font-normal text-font/80">
           Number of rounds :
         </label>
         <Counter count={count} setCount={setCount} max={20} />
       </section>
-      <section className="px-2 flex gap-5 justify-between pr-10 items-center ">
+      <section
+        onClick={() => {
+          setTask({ ...task, repeatDaily: enabled });
+        }}
+        className="px-2 flex gap-5 justify-between pr-10 items-center "
+      >
         <label className="px-1 text-sm font-normal text-font/80">
           Repeat :
         </label>

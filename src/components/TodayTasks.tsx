@@ -3,19 +3,30 @@ import {useQuery} from "react-query"
 import Task from './Task';
 import { deleteTask } from '../lib/dalateTask';
 import { updateTask } from '../lib/updateTask';
+import { useCurrentStore } from '../store/store';
+import { getTasksForCurrentDay } from '../lib/getTodayTasks';
 const TodayTasks = () => {
 
+    const currentTask = useCurrentStore(state=>state.currentTask)
+    const setCurrentTask = useCurrentStore(state=>state.setCurrentTask)
 
-    const { data, isError, isLoading , refetch } = useQuery({
-      queryKey: ["tasks"],
-      queryFn: () => getAllTasks(),
+    const { data, isError, isLoading, refetch } = useQuery({
+      queryKey: ["todaytasks"],
+      queryFn: () => getTasksForCurrentDay(),
+      //? all tasks
+    //  queryFn: () => getAllTasks(),
     });
   async function handleDeleteTask(id: string) {
     await deleteTask(id);
-    data?.filter((task) => task.id !== id)
+    // data?.filter((task) => task.id !== id)
     refetch()
+    if(currentTask!==null){
+    currentTask.id===id?setCurrentTask(null):null
+    }
   }
 
+  console.log(data , "home page");
+  
   async function handleUpdateTask(task: Task) {
     await updateTask(task);
     data?.map((t) => (t.id === task.id ? { ...task } : { ...t }))

@@ -52,28 +52,7 @@ export default function MainNav() {
                         : ""
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
-                    <BsFillCalendarWeekFill
-                      className="mr-2 h-5 w-5"
-                      aria-hidden="true"
-                    />
-                    This Week Tasks
-                  </button>
-                )}
-              </Menu.Item>
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    className={`${
-                      active
-                        ? "bg-gradient-to-br from-main200 to-main100 text-white"
-                        : ""
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    <BsFillCalendarRangeFill
-                      className="mr-2 h-5 w-5"
-                      aria-hidden="true"
-                    />
-                    This Month Tasks
+                    Comming Soon ...
                   </button>
                 )}
               </Menu.Item>

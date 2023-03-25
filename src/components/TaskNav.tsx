@@ -2,15 +2,29 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { GiRocketFlight } from "react-icons/gi";
 import { MdDeleteSweep, MdOutlineMoreVert } from "react-icons/md";
+import { useCurrentStore, useSettingStore } from "../store/store";
 
 
 interface NavTask {
-  task: TaskResult;
-  handleDeleteTask: (id:string)=>void;
+  task: Task;
+  handleDeleteTask: (id: string) => void;
 }
 
 
 export default function TaskNav({ task, handleDeleteTask }: NavTask) {
+ 
+ const setCurrentTask =useCurrentStore(state=>state.setCurrentTask)
+ const currentTask = useCurrentStore((state) => state.currentTask);
+ const finish = useCurrentStore((state) => state.finish);
+ const settings =useSettingStore(state=>state.settings)
+  
+
+ const  hundelStart = ()=>{
+  if(task.id !== currentTask?.id){
+      setCurrentTask(task);
+  }
+ }
+ 
   return (
     <section className="">
       <Menu as="div" className="relative inline-block ">
@@ -35,6 +49,7 @@ export default function TaskNav({ task, handleDeleteTask }: NavTask) {
             <div className="px-1 py-1 ">
               <Menu.Item>
                 <button
+                  onClick={hundelStart}
                   className={`focus:ring ring-main300 hover:bg-gradient-to-br from-main200 to-main100 hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   <GiRocketFlight className="mr-2 h-5 w-5" aria-hidden="true" />

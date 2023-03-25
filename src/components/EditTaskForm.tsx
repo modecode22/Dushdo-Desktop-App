@@ -10,7 +10,7 @@ import { updateTask } from "../lib/updateTask";
 
 
 interface Props {
-  task: TaskResult;
+  task: Task;
 }
 
 const EditTaskForm = ({ task }: Props) => {
@@ -19,13 +19,13 @@ const EditTaskForm = ({ task }: Props) => {
   });
   const [theTask, setTheTask] = useState<Task>({
     completed: task.completed,
-    completedSubTasks: task.completed_subtasks,
-    dueDate: task.due_date,
+    completedSubTasks: task.completedSubTasks,
+    dueDate: task.dueDate,
     duration: task.duration,
     id: task.id,
     name: task.name,
     repeatDaily: task.repeatDaily,
-    totalSubTasks: task.total_subtasks,
+    totalSubTasks: task.totalSubTasks,
     description: "",
   });
 

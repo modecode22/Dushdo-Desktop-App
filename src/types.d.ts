@@ -19,17 +19,21 @@ interface Task {
   totalSubTasks: number;
   completed: boolean;
 }
-interface TaskResult {
+
+interface TaskFromDb {
   id: string;
   name: string;
-  description: string;
+  description?: string | null;
   due_date: Date;
-  repeatDaily: boolean;
-  duration: number;
+  repeat_daily: boolean;
+  duration: number; // in minutes
   completed_subtasks: number;
   total_subtasks: number;
   completed: boolean;
 }
+
+
+
 
 interface Settings {
   pomodoroLength: number; // The length of a pomodoro session in minutes

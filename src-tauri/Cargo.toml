@@ -1,5 +1,5 @@
 [package]
-name = "Dushdo"
+name = "dushdo"
 version = "0.0.0"
 description = "best todo App"
 authors = ["moncef aissaoui"]

@@ -17,5 +17,7 @@ const db = await Database.load("sqlite:test.db");
     );`
   );
 
+
+
   return null
 }

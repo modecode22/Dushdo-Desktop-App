@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import {  persist } from "zustand/middleware";
+import { updateTask } from "../lib/updateTask";
 
 interface SideBarState {
   open: boolean;
@@ -76,7 +77,7 @@ export const useSettingStore = create<SettingsState>()(
 
 
 interface TimerState {
-  currentTask: TaskResult|null;
+  currentTask: Task | null;
   numberOfSessions: number;
   TimerState: "pomodoro" | "shortBreak" | "longBreak";
   finish: ({
@@ -86,6 +87,8 @@ interface TimerState {
     numberOfSessions: number;
     TimerState: "pomodoro" | "shortBreak" | "longBreak";
   }) => void;
+  setCurrentTask: (task: Task | null) => void;
+  updateCurrentTask: (task: Task) => void;
 }
 
 
@@ -95,7 +98,7 @@ export const useCurrentStore = create<TimerState>()(
   persist(
     (set) => {
       return {
-        currentTask:null ,
+        currentTask: null,
         TimerState: "pomodoro",
         numberOfSessions: getSettings().numPomodorosBeforeLongBreak,
         finish: ({
@@ -108,6 +111,24 @@ export const useCurrentStore = create<TimerState>()(
           set({
             numberOfSessions,
             TimerState,
+          });
+        },
+        setCurrentTask: (task: Task | null) => {
+          set({
+            currentTask: task,
+          });
+        },
+        updateCurrentTask: (task: Task) => {
+  const updatedTask = { ...task };
+  updatedTask.completedSubTasks++;
+
+  if (updatedTask.completedSubTasks === updatedTask.totalSubTasks) {
+    updatedTask.completed = true;
+  }
+
+          updateTask(updatedTask);
+          set({
+            currentTask: updatedTask,
           });
         },
       };
