@@ -20,7 +20,7 @@ const MainData = ({ update }: { update :boolean}) => {
     return <div>error in the server </div>;
   }
 
-  useEffect(() => {}, [update]);
+  // useEffect(() => {}, [update]);
 
   function calculateTaskStats(tasks: Task[]): {
     hoursLeft: number;

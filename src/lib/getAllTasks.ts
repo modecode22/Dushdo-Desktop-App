@@ -12,7 +12,7 @@ export async function getAllTasks(): Promise<Task[]> {
     completedSubTasks: task.completed_subtasks,
     description: task.description,
     id: task.id,
-    dueDate: task.due_date,
+    dueDate: new Date (task.due_date),
     duration: task.duration,
     name: task.name,
     totalSubTasks: task.total_subtasks,

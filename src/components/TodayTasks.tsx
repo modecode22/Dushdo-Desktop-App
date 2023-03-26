@@ -12,9 +12,9 @@ const TodayTasks = ({ update }: { update :boolean}) => {
 
   const { data, isError, isLoading, refetch } = useQuery({
     queryKey: ["todaytasks"],
-    queryFn: () => getTasksForCurrentDay(),
+     queryFn: () => getTasksForCurrentDay(),
     //? all tasks
-    //  queryFn: () => getAllTasks(),
+    // queryFn: () => getAllTasks(),
   });
   async function handleDeleteTask(id: string) {
     await deleteTask(id);

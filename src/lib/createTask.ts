@@ -10,7 +10,7 @@ export async function createTask(task: Task): Promise<Task> {
         task.id,
         task.name,
         task.description,
-        task.dueDate.toLocaleDateString(),
+        task.dueDate.toISOString(),
         task.repeatDaily ? 1 : 0,
         task.duration,
         task.completedSubTasks,
