@@ -78,17 +78,7 @@ export const useSettingStore = create<SettingsState>()(
 
 interface TimerState {
   currentTask: Task | null;
-  numberOfSessions: number;
-  TimerState: "pomodoro" | "shortBreak" | "longBreak";
-  finish: ({
-    numberOfSessions,
-    TimerState,
-  }: {
-    numberOfSessions: number;
-    TimerState: "pomodoro" | "shortBreak" | "longBreak";
-  }) => void;
   setCurrentTask: (task: Task | null) => void;
-  updateCurrentTask: (task: Task) => void;
 }
 
 
@@ -96,39 +86,12 @@ interface TimerState {
 
 export const useCurrentStore = create<TimerState>()(
   persist(
-    (set) => {
+    (set, get) => {
       return {
         currentTask: null,
-        TimerState: "pomodoro",
-        numberOfSessions: getSettings().numPomodorosBeforeLongBreak,
-        finish: ({
-          numberOfSessions,
-          TimerState,
-        }: {
-          numberOfSessions: number;
-          TimerState: "pomodoro" | "shortBreak" | "longBreak";
-        }) => {
-          set({
-            numberOfSessions,
-            TimerState,
-          });
-        },
         setCurrentTask: (task: Task | null) => {
           set({
             currentTask: task,
-          });
-        },
-        updateCurrentTask: (task: Task) => {
-  const updatedTask = { ...task };
-  updatedTask.completedSubTasks++;
-
-  if (updatedTask.completedSubTasks === updatedTask.totalSubTasks) {
-    updatedTask.completed = true;
-  }
-
-          updateTask(updatedTask);
-          set({
-            currentTask: updatedTask,
           });
         },
       };
