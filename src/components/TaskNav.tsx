@@ -15,8 +15,6 @@ export default function TaskNav({ task, handleDeleteTask }: NavTask) {
  
  const setCurrentTask =useCurrentStore(state=>state.setCurrentTask)
  const currentTask = useCurrentStore((state) => state.currentTask);
- const finish = useCurrentStore((state) => state.finish);
- const settings =useSettingStore(state=>state.settings)
   
 
  const  hundelStart = ()=>{

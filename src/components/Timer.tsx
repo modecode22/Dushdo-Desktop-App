@@ -1,33 +1,43 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import {TbPlayerPauseFilled} from 'react-icons/tb'
 import { BsFillPlayFill } from "react-icons/bs";
 import { FaRedoAlt } from "react-icons/fa";
-import { useCurrentStore, useSettingStore } from "../store/store";
+import { useCurrentStore } from "../store/store";
 import { updateTask } from "../lib/updateTask";
-import { useQuery } from "react-query";
+import check from "/check.mp3";
+import timetostart from "/timetostart.mp3";
+
 const Timer = ({
   settings,
   currentTask,
+  setUpdate,
+  update
 }: {
   settings: Settings;
-  currentTask:Task |null
+  currentTask: Task | null;
+  setUpdate:Dispatch<SetStateAction<boolean>>
+  update:boolean
 }) => {
-  //  const session = 60*settings.pomodoroLength
-  //  const ShortBreak = 60 * settings.shortBreakLength;
-  //  const LongBreak = 60 * settings.longBreakLength;
-  //  const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak
+  // const session = 60*settings.pomodoroLength
+  // const ShortBreak = 60 * settings.shortBreakLength;
+  // const LongBreak = 60 * settings.longBreakLength;
+  // const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak
+const checkSound = new Audio(check);
+const timetostartSound = new Audio(timetostart);
 
-  const session = 7;
-  const ShortBreak = 2;
-  const LongBreak = 5;
-  const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak;
+
+
+
+  //? this just for testing timer
+const session = 7;
+const ShortBreak = 2;
+const LongBreak = 5;
+const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak;
 
   // todo see if this is good for ux or not
   // const autoStartNextPomodoro = settings.autoStartNextPomodoro;
-  const { refetch } = useQuery({
-    queryKey: ["todaytasks"],
-  });
+
   const [seconds, setSeconds] = useState(session);
   const [isRunning, setIsRunning] = useState(false);
   const [sessionType, setSessionType] = useState<
@@ -35,7 +45,6 @@ const Timer = ({
   >("pomodoro"); // can be "pomodoro", "shortBreak", or "longBreak"
   const [theNumberOfSessions, setTheNumberOfSessions] = useState(0);
   const setCurrentTask = useCurrentStore((state) => state.setCurrentTask);
-
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined;
     if (isRunning) {
@@ -63,12 +72,13 @@ const Timer = ({
                 updateTask(updatedTask);
                 setCurrentTask(null);
                 setSessionType("pomodoro");
-
-                refetch();
+                setUpdate(!update)
+                checkSound.play()
                 return session;
               }
             }
-            refetch();
+            checkSound.play();
+            setUpdate(!update);
             return LongBreak;
           }
           if (sessionType === "pomodoro") {
@@ -91,12 +101,13 @@ const Timer = ({
                   updateTask(updatedTask);
                   setCurrentTask(null);
                   setSessionType("pomodoro");
-
-                  refetch();
-                  return session;
+checkSound.play();
+setUpdate(!update)                 
+ return session;
                 }
               }
-              refetch();
+              checkSound.play();
+             setUpdate(!update);
               return ShortBreak;
             }
           }
@@ -106,6 +117,7 @@ const Timer = ({
               setIsRunning(false);
 
               setSessionType("pomodoro");
+              timetostartSound.play();
               return session;
             }
           }
@@ -116,6 +128,7 @@ const Timer = ({
               setTheNumberOfSessions(0);
 
               setSessionType("pomodoro");
+              timetostartSound.play();
               return session;
             }
           }
@@ -124,118 +137,18 @@ const Timer = ({
       }, 1000);
     }
     return () => clearInterval(intervalId!);
-  }, [isRunning, sessionType, theNumberOfSessions, currentTask]);
+  }, [isRunning]);
 
-  //   useEffect(() => {
-  //     let intervalId: NodeJS.Timeout | undefined;
-  //     if (isRunning) {
-  //       intervalId = setInterval(() => {
-  //         setSeconds((currentSeconds) => {
-  //           if (
-  //             sessionType === "pomodoro" &&
-  //             theNumberOfSessions === sessionsNumBeforeLongBreak &&
-  //             currentSeconds === 0
-  //           ) {
-  //             clearInterval(intervalId!);
-  //             setIsRunning(false);
-  //             setTheNumberOfSessions(0);
-  //             inFinish({
-  //               numberOfSessions: 0,
-  //               TimerState: "longBreak",
-  //             });
-  //             setSessionType("longBreak");
-  //             if(currentTask!== null){
-  //             const updatedTask = {
-  //               ...currentTask,
-  //               completedSubTasks: currentTask!.completedSubTasks++,
-  //             };
-  //             setCurrentTask(updatedTask!);
-  //             updateTask(updatedTask!);
-  //             if (updatedTask.completedSubTasks === updatedTask.totalSubTasks) {
-  //               updatedTask.completed = true;
-  //                updateTask(updatedTask);
-  //               setCurrentTask(null);
-  //                           setSessionType("pomodoro");
-  // inFinish({
-  //   numberOfSessions: 0,
-  //   TimerState: "pomodoro",
-  // });
-  // refetch();
-  // return session;
-  //             }
-  //           }
 
-  //             refetch();
-  //             return LongBreak;
-  //           }
-  //           if (sessionType === "pomodoro") {
-  //             if (currentSeconds === 0) {
-  //               clearInterval(intervalId!);
-  //               setIsRunning(false);
-  //               setTheNumberOfSessions(theNumberOfSessions + 1);
-  //               inFinish({
-  //                 numberOfSessions: numberOfSessions + 1,
-  //                 TimerState: "shortBreak",
-  //               });
-  //               setSessionType("shortBreak");
-  //  if (currentTask !== null) {
-  //    const updatedTask = {
-  //      ...currentTask,
-  //      completedSubTasks: currentTask!.completedSubTasks++,
-  //    };
-  //    setCurrentTask(updatedTask!);
-  //    updateTask(updatedTask!);
-  //    if (updatedTask.completedSubTasks === updatedTask.totalSubTasks) {
-  //      updatedTask.completed = true;
-  //      updateTask(updatedTask);
-  //      setCurrentTask(null);
-  //      setSessionType("pomodoro");
-  //      inFinish({
-  //        numberOfSessions: 0,
-  //        TimerState: "pomodoro",
-  //      });
-  //      refetch();
-  //      return session;
-  //    }
-  //  }              refetch();
-  //               return ShortBreak;
-  //             }
-  //           }
-  //           if (sessionType === "shortBreak") {
-  //             if (currentSeconds === 0) {
-  //               clearInterval(intervalId!);
-  //               setIsRunning(false);
-  //               inFinish({
-  //                 numberOfSessions: numberOfSessions,
-  //                 TimerState: "pomodoro",
-  //               });
-  //               setSessionType("pomodoro");
-  //               return session;
-  //             }
-  //           }
-  //           if (sessionType === "longBreak") {
-  //             if (currentSeconds === 0) {
-  //               clearInterval(intervalId!);
-  //               setIsRunning(false);
-  //               setTheNumberOfSessions(0);
-  //               inFinish({
-  //                 numberOfSessions: 0,
-  //                 TimerState: "pomodoro",
-  //               });
-  //               setSessionType("pomodoro");
-  //               return session;
-  //             }
-  //           }
-  //           return currentSeconds - 1;
-  //         });
-  //       }, 1000);
-  //     }
-  //     return () => clearInterval(intervalId!);
-  //   }, [isRunning]);
-
-  const handleStart = () => setIsRunning(true);
-  const handlePause = () => setIsRunning(false);
+  
+  const handleStart = () => {
+    setIsRunning(true);
+  }
+  const handlePause = () =>{
+     setIsRunning(false);
+    }
   const handleReset = () => {
+
     if (sessionType === "pomodoro") {
       setSeconds(session);
     }
@@ -317,6 +230,7 @@ const Timer = ({
             </>
           )}
         </div>
+
       </section>
     </>
   );
