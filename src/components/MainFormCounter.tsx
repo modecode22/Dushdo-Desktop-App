@@ -1,0 +1,65 @@
+import { Dispatch, SetStateAction } from "react";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+interface Props {
+  //max number
+  max: number;
+  //add or rmv by number
+  by?: number;
+  //min number
+  min?: number;
+
+  // set number function
+  setTask: Dispatch<SetStateAction<Task>>;
+
+  // the default number from the task
+  task: Task;
+}
+const MainFormCounter = ({
+  max,
+  by = 1,
+  min = 1,
+  task,
+  setTask,
+}: Props) => {
+  const increment = () => {
+    if (task.totalSubTasks >= max) {
+      setTask({ ...task, totalSubTasks: min });
+    } else {
+      setTask({ ...task, totalSubTasks: task.totalSubTasks + by });
+    }
+  };
+
+  const decrement = () => {
+    if (task.totalSubTasks <= min) {
+      setTask({ ...task, totalSubTasks: max });
+    } else {
+      setTask({ ...task, totalSubTasks: task.totalSubTasks - by });
+    }
+  };
+
+  return (
+    <div className="active:brightness-110 overflow-hidden w-28 h-10 rounded-xl border border-font/10 hover:border-font/50 flex justify-center items-center">
+      <button
+        type="button"
+        className="duration-200 h-10 w-10 flex justify-center items-center transition-all hover:bg-gradient-to-br from-main100 to-main200 text-white font-bold "
+        onClick={decrement}
+      >
+        <AiFillCaretDown />
+      </button>
+      <div className="  font-bold py-2 px-4 w-16 text-center">
+        {task.totalSubTasks}
+      </div>
+      <button
+        type="button"
+        className="duration-200 h-10 w-10 flex justify-center items-center transition-all hover:bg-gradient-to-br from-main100 to-main200 text-white font-bold "
+        onClick={increment}
+      >
+        <AiFillCaretUp />
+      </button>
+    </div>
+  );
+};
+
+export default MainFormCounter
+
+

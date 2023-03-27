@@ -7,6 +7,7 @@ import { createTask } from "../lib/createTask";
 import { useQuery } from "react-query";
 import {} from "@radix-ui/react-dialog";
 import { useSettingStore } from "../store/store";
+import MainFormCounter from "./MainFormCounter";
 
 
 
@@ -19,8 +20,7 @@ const AddTaskForm = ({ close }:Props) => {
     queryKey: ["todaytasks"],
   });
 
-  const settings = useSettingStore(state=> state.settings)
-  const [count, setCount] = useState<number>(4);
+  const settings:Settings = useSettingStore(state=> state.settings)
   const [enabled, setEnabled] = useState<boolean>(false);
   const [duration, setDuration] = useState<number>(settings.pomodoroLength);
   const [task, setTask] = useState<Task>({
@@ -31,16 +31,15 @@ const AddTaskForm = ({ close }:Props) => {
     id: UniqueId(),
     name: "",
     repeatDaily: enabled,
-    totalSubTasks: count,
+    totalSubTasks: 4,
     description: "",
   });
 
 
   async function handleCreateTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const thetask = await createTask(task);
+            const thetask = await createTask(task);
     //  setTasks([...tasks, task]);
-    setCount(4);
     setEnabled(false);
     //todo make duration changeable
     setDuration(25);
@@ -52,7 +51,7 @@ const AddTaskForm = ({ close }:Props) => {
       repeatDaily: enabled,
       duration: duration,
       completedSubTasks: 0,
-      totalSubTasks: count,
+      totalSubTasks: 4,
       completed: false,
     });
     refetch();
@@ -80,18 +79,15 @@ const AddTaskForm = ({ close }:Props) => {
           className="placeholder:text-font/20 focus:placeholder:text-font/50 w-full h-10 p-1 px-2 rounded-lg bg-black/40 border-2 outline-none border-main100/20 focus:border-main100"
         />
       </section>
-      <section
-        onClick={() => {
-          setTask({ ...task, totalSubTasks: count });
-        }}
-        className="px-2 flex gap-5 justify-between pr-10 items-center "
-      >
+      <section className="px-2 flex gap-5 justify-between pr-10 items-center ">
         <label className="px-1 text-sm font-normal text-font/80">
           Number of rounds :
         </label>
-        <Counter count={count} setCount={setCount} max={20} />
+        <MainFormCounter task={task} setTask={setTask} max={20} />
       </section>
-      <section
+
+      {/* {// todo add repeat fuctionality } */}
+      {/* <section
         onClick={() => {
           setTask({ ...task, repeatDaily: enabled });
         }}
@@ -103,7 +99,7 @@ const AddTaskForm = ({ close }:Props) => {
         <div className="px-5">
           <AddTaskFormSwitch enabled={enabled} setEnabled={setEnabled} />
         </div>
-      </section>
+      </section> */}
 
       <section className="w-full flex justify-center ">
         <button className="mt-5 flex justify-center items-center gap-2 rounded-xl w-1/2 h-10 bg-black/80 shadow-sm shadow-black hover:bg-gradient-to-br from-main100 to-main200 duration-100 transition-all  hover:shadow-main100 active:brightness-110">

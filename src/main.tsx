@@ -7,7 +7,6 @@ import ErrorPage from "./error-page";
 import Home from "./routes/home";
 import Data from "./routes/data";
 import Settings from "./routes/settings";
-import TestForDb from "./components/TestForDb";
 import {
   QueryClient,
   QueryClientProvider,
@@ -52,7 +51,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      {/* <TestForDb /> */}
       <RouterProvider router={router} />
     </QueryClientProvider>
   </React.StrictMode>

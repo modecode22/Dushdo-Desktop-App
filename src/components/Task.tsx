@@ -4,6 +4,7 @@ import { IoMdRocket } from "react-icons/io";
 import { MdDeleteSweep } from "react-icons/md";
 import CircleForTask from "./CircleForTask";
 import TaskNav from "./TaskNav";
+import { useCurrentStore } from "../store/store";
 
 interface TaskOp {
   task: Task;
@@ -13,10 +14,22 @@ interface TaskOp {
 
 
 const Task = ({ task, handleDeleteTask }: TaskOp) => {
+  const setCurrentTask = useCurrentStore((state) => state.setCurrentTask);
+  const currentTask = useCurrentStore((state) => state.currentTask);
+  
   const value = (task.completedSubTasks * 100) / task.totalSubTasks;
-
+ const hundelStart = () => {
+   if (!task.completed) {
+     if (task.id !== currentTask?.id) {
+       setCurrentTask(task);
+     }
+   }
+ };
   return (
-    <section className="relative border border-transparent hover:border-main100/50  group  max-w-xl select-none h-20 p-2 px-4 w-full  rounded-xl bg-dark100 flex flex-col justify-between items-center">
+    <section
+      onClick={hundelStart}
+      className="relative border border-transparent hover:border-main100/50  group  max-w-xl select-none h-20 p-2 px-4 w-full  rounded-xl bg-dark100 flex flex-col justify-between items-center"
+    >
       <header className="w-full flex justify-between  items-center gap-2 ">
         {/* <section className="w-6 h-6 rounded-lg bg-gradient-to-br from-main100 to-main200 flex justify-center items-center">
           <GiAchievement className="w-5 h-5" />

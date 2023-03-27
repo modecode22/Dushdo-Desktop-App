@@ -11,8 +11,8 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "Focalist-react",
-    "version": "0.0.0"
+    "productName": "Dushdo",
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -44,7 +44,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "Focalist-react",
+        "title": "Dushdo",
         "width": 800,
         "height": 600
       }

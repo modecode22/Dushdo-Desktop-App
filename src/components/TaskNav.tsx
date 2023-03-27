@@ -18,9 +18,12 @@ export default function TaskNav({ task, handleDeleteTask }: NavTask) {
   
 
  const  hundelStart = ()=>{
-  if(task.id !== currentTask?.id){
-      setCurrentTask(task);
+  if(!task.completed){
+if (task.id !== currentTask?.id) {
+  setCurrentTask(task);
+}
   }
+  
  }
  
   return (
@@ -45,15 +48,20 @@ export default function TaskNav({ task, handleDeleteTask }: NavTask) {
         >
           <Menu.Items className="z-50 absolute right-0 mt-2 w-32 origin-top-right divide-y divide-gray-100 rounded-md backdrop-blur-lg bg-black/60 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
-              <Menu.Item>
-                <button
-                  onClick={hundelStart}
-                  className={`focus:ring ring-main300 hover:bg-gradient-to-br from-main200 to-main100 hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                >
-                  <GiRocketFlight className="mr-2 h-5 w-5" aria-hidden="true" />
-                  Start
-                </button>
-              </Menu.Item>
+              {!task.completed ? (
+                <Menu.Item>
+                  <button
+                    onClick={hundelStart}
+                    className={`focus:ring ring-main300 hover:bg-gradient-to-br from-main200 to-main100 hover:text-white group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    <GiRocketFlight
+                      className="mr-2 h-5 w-5"
+                      aria-hidden="true"
+                    />
+                    Start
+                  </button>
+                </Menu.Item>
+              ):null}
 
               {/*
               

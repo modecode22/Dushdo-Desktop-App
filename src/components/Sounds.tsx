@@ -1,28 +1,24 @@
-import war from "/Audiomachine-AboveandBeyond.mp3";
-import war1 from "/Audiomachine-AbsoluteMagnitude.mp3";
-import war2 from "/Audiomachine-Apotheosis.mp3";
-import war3 from "/Audiomachine-AshesofTime .mp3";
-import war4 from "/Audiomachine-BloodandStone.mp3";
-import SoundPlayer from "./SoundPlayer";
-import warImg from "/war.png";
-import warwar1 from "/war1.png";
-import warwar2 from "/war2.png";
-import warwar3 from "/war3.png";
-import warwar4 from "/war4.png";
 
+import SoundPlayer from "./SoundPlayer";
+import rain from "/rain.png";
+import water from "/water.png";
+import nature from "/nature.png";
+import fire from "/fire.png";
+import brownnoise from "/brownnoise.png";
+import rainSound from "/rain.mp3";
+import waterSound from "/water.mp3";
+import natureSound from "/nature.mp3";
+import fireSound from "/fire.mp3";
+import brownnoiseSound from "/brownnoise.mp3";
 
 const Sounds = () => {
   return (
     <section className="    p-2 pb-12  grid grid-cols-1  gap-2  ">
-      <SoundPlayer src={war} img={warImg} />
-      <SoundPlayer src={war1} img={warwar1} />
-      <SoundPlayer src={war2} img={warwar2} />
-      <SoundPlayer src={war3} img={warwar3} />
-      <SoundPlayer src={war4} img={warwar4} />
-      <SoundPlayer src={war1} img={warwar1} />
-      <SoundPlayer src={war2} img={warwar2} />
-      <SoundPlayer src={war3} img={warwar3} />
-      <SoundPlayer src={war4} img={warwar4} />
+      <SoundPlayer src={rainSound} img={rain} />
+      <SoundPlayer src={waterSound} img={water} />
+      <SoundPlayer src={natureSound} img={nature} />
+      <SoundPlayer src={fireSound} img={fire} />
+      <SoundPlayer src={brownnoiseSound} img={brownnoise} />
     </section>
   );
 }
