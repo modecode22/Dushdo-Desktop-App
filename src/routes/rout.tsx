@@ -10,11 +10,11 @@ import water from "/water.png";
 import nature from "/nature.png";
 import fire from "/fire.png";
 import brownnoise from "/brownnoise.png";
-import rainSound from "/rain.mp3";
-import waterSound from "/water.mp3";
-import natureSound from "/nature.mp3";
-import fireSound from "/fire.mp3";
-import brownnoiseSound from "/brownnoise.mp3";
+import rainSound from "/rain.aac";
+import waterSound from "/water.aac";
+import natureSound from "/nature.aac";
+import fireSound from "/fire.aac";
+import brownnoiseSound from "/brownnoise.aac";
 
 
 

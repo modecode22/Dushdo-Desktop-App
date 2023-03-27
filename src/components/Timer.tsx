@@ -5,8 +5,8 @@ import { BsFillPlayFill } from "react-icons/bs";
 import { FaRedoAlt } from "react-icons/fa";
 import { useCurrentStore } from "../store/store";
 import { updateTask } from "../lib/updateTask";
-import check from "/check.mp3";
-import timetostart from "/timetostart.mp3";
+import check from "/check.aac";
+import timetostart from "/timetostart.aac";
 
 const Timer = ({
   settings,
