@@ -1,4 +1,3 @@
-import { getAllTasks } from '../lib/getAllTasks';
 import {useQuery} from "react-query"
 import Task from './Task';
 import { deleteTask } from '../lib/dalateTask';
@@ -12,7 +11,25 @@ const TodayTasks = ({ update }: { update :boolean}) => {
 
   const { data, isError, isLoading, refetch } = useQuery({
     queryKey: ["todaytasks"],
-     queryFn: () => getTasksForCurrentDay(),
+     queryFn:async () =>{ 
+      const tasks = await getTasksForCurrentDay()
+      const currentDate = new Date();
+      const currentDay = currentDate.getDate();
+      const currentMonth = currentDate.getMonth();
+      const currentYear = currentDate.getFullYear();
+
+      const currentTasks = tasks.filter((task:Task) => {
+        const taskDay = task.dueDate.getDate();
+        const taskMonth = task.dueDate.getMonth();
+        const taskYear = task.dueDate.getFullYear();
+        return (
+          taskDay === currentDay &&
+          taskMonth === currentMonth &&
+          taskYear === currentYear
+        );
+      });
+      return currentTasks;
+    },
     //? all tasks
     // queryFn: () => getAllTasks(),
   });

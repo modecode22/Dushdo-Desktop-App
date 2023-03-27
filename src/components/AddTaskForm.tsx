@@ -35,11 +35,7 @@ const AddTaskForm = ({ close }:Props) => {
     description: "",
   });
 
-  /**
-   * This is a multi-line Google style docstring.
-   *
-   * @param {React.FormEvent<HTMLFormElement>} event
-   */
+
   async function handleCreateTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const thetask = await createTask(task);

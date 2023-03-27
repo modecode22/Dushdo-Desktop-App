@@ -2,6 +2,7 @@ import { useState } from "react";
 import Counter from "../components/Counter";
 import { useSettingStore } from "../store/store";
 import SaveSettingsBtn from "../components/SaveSettingsBtn";
+import DeleteAllDataBtn from "../components/DeleteAllDataBtn";
 interface Settings {
   pomodoroLength: number; // The length of a pomodoro session in minutes
   shortBreakLength: number; // The length of a short break in minutes
@@ -26,7 +27,9 @@ const Settings = () => {
     // );
 
   return (
-    <main className="select-none h-full w-full flex justify-center p-5 items-center text-center">
+    <main className="relative select-none h-full w-full flex justify-center p-5 items-center text-center">
+      <DeleteAllDataBtn />
+ 
       <main className="shadow-sm shadow-darkform bg-dark100 gap-2 h-[70%] w-full max-w-sm p-5 md:px-10 rounded-xl border border-font/20 flex items-center flex-col justify-between">
         <main className="flex flex-col gap-5">
           <h1 className="text-2xl font-medium select-none">

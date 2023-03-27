@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useQuery } from "react-query";
 
-const MainData = ({ update }: { update :boolean}) => {
+const MainData = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["todaytasks"],
   });
@@ -20,7 +20,6 @@ const MainData = ({ update }: { update :boolean}) => {
     return <div>error in the server </div>;
   }
 
-  // useEffect(() => {}, [update]);
 
   function calculateTaskStats(tasks: Task[]): {
     hoursLeft: number;
@@ -57,7 +56,7 @@ const MainData = ({ update }: { update :boolean}) => {
     <div className=" w-full h-full grid grid-cols-1  gap-2">
       <div className="border overflow-hidden border-font/10 hover:border-font/50  bg-dark200   rounded-xl  duration-100 transition-all group   w-full h-14 backdrop-blur-md grid grid-cols-3">
         <h1 className="bg-darkform col-span-1 rounded-lg h-full text-2xl flex justify-center items-center">
-          {stats.finishedHours / 60}
+          {(stats.finishedHours / 60).toFixed(1)}
         </h1>
         <h1 className="col-span-2 flex justify-center items-center">
           Hours Done
@@ -65,7 +64,7 @@ const MainData = ({ update }: { update :boolean}) => {
       </div>
       <div className="border overflow-hidden border-font/10 hover:border-font/50  bg-dark200   rounded-xl  duration-100 transition-all group   w-full h-14 backdrop-blur-md grid grid-cols-3">
         <h1 className="bg-darkform col-span-1 rounded-lg h-full text-2xl flex justify-center items-center">
-          {stats.hoursLeft / 60}
+          {(stats.hoursLeft / 60).toFixed(1)}
         </h1>
         <h1 className="col-span-2 flex justify-center items-center">
           Hours left

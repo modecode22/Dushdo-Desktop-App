@@ -20,6 +20,28 @@ interface Task {
   completed: boolean;
 }
 
+
+interface Result {
+  [key: string]: Task[];
+  sunday: Task[];
+  monday: Task[];
+  tuesday: Task[];
+  wednesday: Task[];
+  thursday: Task[];
+  friday: Task[];
+  saturday: Task[];
+}
+
+
+interface ResultWithHours {
+  day:string,
+  hours:string
+}
+
+
+
+
+
 interface TaskFromDb {
   id: string;
   name: string;

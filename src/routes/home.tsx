@@ -51,7 +51,7 @@ const [update, setUpdate] = useState(true)
                       </>
                     )}
                   </div>
-                  <MainData update={update} />
+                  <MainData />
                 </main>
               </div>
             </section>

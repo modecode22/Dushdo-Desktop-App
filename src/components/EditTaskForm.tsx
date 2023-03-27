@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { GiEmberShot } from "react-icons/gi";
-import AddTaskFormSwitch from "./AddTaskFormSwitch";
-import Counter from "./Counter";
-import { UniqueId } from "../lib/utils";
-import { createTask } from "../lib/createTask";
+
 import { useQuery } from "react-query";
 import { updateTask } from "../lib/updateTask";
 

@@ -13,6 +13,8 @@ import {
   QueryClientProvider,
 } from "react-query";
 import {setupDatabase} from './lib/db'
+import Whow from "./routes/who";
+import Why from "./routes/why";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -20,7 +22,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Rout />,
     errorElement: <ErrorPage />,
-    loader:setupDatabase,
+    loader: setupDatabase,
     children: [
       {
         path: "/",
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: "/settings",
         element: <Settings />,
+      },
+      {
+        path: "/who",
+        element: <Whow />,
+      },
+      {
+        path: "/why",
+        element: <Why />,
       },
     ],
   },

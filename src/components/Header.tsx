@@ -3,7 +3,7 @@ import {FaWarehouse} from "react-icons/fa"
 import { IoMdAnalytics } from "react-icons/io";
 import AddInHeader from "./AddInHeader";
 import SoundBtn from "./SoundBtn";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MdSettingsSuggest } from "react-icons/md";
 
 const Header = () => {
@@ -38,19 +38,25 @@ const Header = () => {
       <section className="flex justify-center items-center gap-5">
         <AddInHeader />
         {/* الحافز*/}
-        <button className="group p-1 relative border border-transparent hover:border-font/20 rounded-full hover:bg-black/60 w-8 h-8 duration-200 active:border-font/50  active:bg-black/80 flex justify-center items-center">
+        <Link
+          to={"/why"}
+          className="group p-1 relative border border-transparent hover:border-font/20 rounded-full hover:bg-black/60 w-8 h-8 duration-200 active:border-font/50  active:bg-black/80 flex justify-center items-center"
+        >
           <GiFireTail className="w-6 h-6" />
           <div className="z-[60] font-bold text-xs group-hover:scale-100 scale-0 duration-75  absolute w-20 bg-black/60 rounded-lg flex justify-center items-center  top-10 h-6  ">
             Why ?
           </div>
-        </button>
+        </Link>
         {/* من نحن ؟ */}
-        <button className="group relative border border-transparent hover:border-font/20 rounded-full hover:bg-black/60 w-8 h-8 duration-200 active:border-font/50  active:bg-black/80 flex justify-center items-center">
+        <Link
+          to={"/who"}
+          className="group relative border border-transparent hover:border-font/20 rounded-full hover:bg-black/60 w-8 h-8 duration-200 active:border-font/50  active:bg-black/80 flex justify-center items-center"
+        >
           <GiRobe className="w-6 h-6" />
           <div className="z-[60] font-bold text-xs group-hover:scale-100 scale-0 duration-75  absolute w-20 bg-black/60 rounded-lg flex justify-center items-center  top-10 h-6  ">
             Who ?
           </div>
-        </button>
+        </Link>
       </section>
     </header>
   );

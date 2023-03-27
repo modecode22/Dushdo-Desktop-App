@@ -19,10 +19,10 @@ const Timer = ({
   setUpdate:Dispatch<SetStateAction<boolean>>
   update:boolean
 }) => {
-  // const session = 60*settings.pomodoroLength
-  // const ShortBreak = 60 * settings.shortBreakLength;
-  // const LongBreak = 60 * settings.longBreakLength;
-  // const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak
+  const session = 60*settings.pomodoroLength
+  const ShortBreak = 60 * settings.shortBreakLength;
+  const LongBreak = 60 * settings.longBreakLength;
+  const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak
 const checkSound = new Audio(check);
 const timetostartSound = new Audio(timetostart);
 
@@ -30,10 +30,10 @@ const timetostartSound = new Audio(timetostart);
 
 
   //? this just for testing timer
-const session = 7;
-const ShortBreak = 2;
-const LongBreak = 5;
-const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak;
+// const session = 7;
+// const ShortBreak = 2;
+// const LongBreak = 5;
+// const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak;
 
   // todo see if this is good for ux or not
   // const autoStartNextPomodoro = settings.autoStartNextPomodoro;
