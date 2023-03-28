@@ -19,17 +19,17 @@ const Timer = ({
   setUpdate:Dispatch<SetStateAction<boolean>>
   update:boolean
 }) => {
-  const session = 60*settings.pomodoroLength
-  const ShortBreak = 60 * settings.shortBreakLength;
-  const LongBreak = 60 * settings.longBreakLength;
-  const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak
+ const session = 60*settings.pomodoroLength
+ const ShortBreak = 60 * settings.shortBreakLength;
+ const LongBreak = 60 * settings.longBreakLength;
+ const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak
 const checkSound = new Audio(check);
 const timetostartSound = new Audio(timetostart);
 
 
 
 
-  //? this just for testing timer
+//? this just for testing timer
 // const session = 7;
 // const ShortBreak = 2;
 // const LongBreak = 5;
@@ -50,43 +50,16 @@ const timetostartSound = new Audio(timetostart);
     if (isRunning) {
       intervalId = setInterval(() => {
         setSeconds((currentSeconds) => {
-          if (
-            sessionType === "pomodoro" &&
-            theNumberOfSessions === sessionsNumBeforeLongBreak &&
-            currentSeconds === 0
-          ) {
-            clearInterval(intervalId!);
-            setIsRunning(false);
-            setTheNumberOfSessions(0);
-
-            setSessionType("longBreak");
-            if (currentTask !== null) {
-              const updatedTask = {
-                ...currentTask,
-                completedSubTasks: currentTask!.completedSubTasks + 1,
-              };
-              setCurrentTask(updatedTask);
-              updateTask(updatedTask);
-              if (updatedTask.completedSubTasks === updatedTask.totalSubTasks) {
-                updatedTask.completed = true;
-                updateTask(updatedTask);
-                setCurrentTask(null);
-                setSessionType("pomodoro");
-                setUpdate(!update)
-                checkSound.play()
-                return session;
-              }
-            }
-            checkSound.play();
-            setUpdate(!update);
-            return LongBreak;
-          }
-          if (sessionType === "pomodoro") {
-            if (currentSeconds === 0) {
+          if (currentSeconds === 0){
+            if (
+              sessionType === "pomodoro" &&
+              theNumberOfSessions === sessionsNumBeforeLongBreak &&
+              currentSeconds === 0
+            ) {
               clearInterval(intervalId!);
               setIsRunning(false);
-              setTheNumberOfSessions(theNumberOfSessions + 1);
-              setSessionType("shortBreak");
+              setTheNumberOfSessions(0);
+              setSessionType("longBreak");
               if (currentTask !== null) {
                 const updatedTask = {
                   ...currentTask,
@@ -101,38 +74,67 @@ const timetostartSound = new Audio(timetostart);
                   updateTask(updatedTask);
                   setCurrentTask(null);
                   setSessionType("pomodoro");
-checkSound.play();
-setUpdate(!update)                 
- return session;
+                  setUpdate(!update);
+                  checkSound.play();
+                  return session;
                 }
               }
               checkSound.play();
-             setUpdate(!update);
-              return ShortBreak;
+              setUpdate(!update);
+              return LongBreak;
             }
-          }
-          if (sessionType === "shortBreak") {
-            if (currentSeconds === 0) {
-              clearInterval(intervalId!);
-              setIsRunning(false);
+            if (sessionType === "pomodoro") {
+              if (currentSeconds === 0) {
+                clearInterval(intervalId!);
+                setIsRunning(false);
+                setTheNumberOfSessions(theNumberOfSessions + 1);
+                setSessionType("shortBreak");
+                if (currentTask !== null) {
+                  const updatedTask = {
+                    ...currentTask,
+                    completedSubTasks: currentTask!.completedSubTasks + 1,
+                  };
+                  setCurrentTask(updatedTask);
+                  updateTask(updatedTask);
+                  if (
+                    updatedTask.completedSubTasks === updatedTask.totalSubTasks
+                  ) {
+                    updatedTask.completed = true;
+                    updateTask(updatedTask);
+                    setCurrentTask(null);
+                    setSessionType("pomodoro");
+                    checkSound.play();
+                    setUpdate(!update);
+                    return session;
+                  }
+                }
+                checkSound.play();
+                setUpdate(!update);
+                return ShortBreak;
+              }
+            }
+            if (sessionType === "shortBreak") {
+              if (currentSeconds === 0) {
+                clearInterval(intervalId!);
+                setIsRunning(false);
+                setSessionType("pomodoro");
+                timetostartSound.play();
+                return session;
+              }
+            }
+            if (sessionType === "longBreak") {
+              if (currentSeconds === 0) {
+                clearInterval(intervalId!);
+                setIsRunning(false);
+                setTheNumberOfSessions(0);
 
-              setSessionType("pomodoro");
-              timetostartSound.play();
-              return session;
+                setSessionType("pomodoro");
+                timetostartSound.play();
+                return session;
+              }
             }
           }
-          if (sessionType === "longBreak") {
-            if (currentSeconds === 0) {
-              clearInterval(intervalId!);
-              setIsRunning(false);
-              setTheNumberOfSessions(0);
-
-              setSessionType("pomodoro");
-              timetostartSound.play();
-              return session;
-            }
-          }
-          return currentSeconds - 1;
+           return currentSeconds -1
         });
       }, 1000);
     }

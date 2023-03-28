@@ -38,6 +38,7 @@ const [update, setUpdate] = useState(true)
                       update={update}
                       currentTask={currentTask}
                     />
+                   
                     {currentTask === null ? null : (
                       <>
                         <div className=" overflow-hidden      duration-100 transition-all group   w-full  backdrop-blur-md p-1 ">
