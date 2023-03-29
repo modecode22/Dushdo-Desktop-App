@@ -38,9 +38,10 @@ Thank you for considering contributing to this project! To make the process as s
 
 Please make sure to test your changes thoroughly before submitting a pull request. Also, please ensure that your changes are well-documented and adhere to the existing code standards.
 ## To-do
-
-    2-Implement statistics page to view progress
-    3-Create settings page to customize experience
+### date: from 29/03/2023 to 03/04/2023
+    1-edit tasks 
+    2-Implement month + year statistics 
+    3-Create sounds settings  
 
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
