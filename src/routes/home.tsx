@@ -38,12 +38,6 @@ const [update, setUpdate] = useState(true)
          update={update}
                       currentTask={currentTask}
                     />
-                    {/* <Timer2
-                      settings={settings}
-                      setUpdate={setUpdate}
-                      update={update}
-                      currentTask={currentTask}
-                    /> */}
 
                     {currentTask === null ? null : (
                       <>

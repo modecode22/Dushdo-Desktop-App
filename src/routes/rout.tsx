@@ -16,17 +16,7 @@ import natureSound from "/nature.aac";
 import fireSound from "/fire.aac";
 import brownnoiseSound from "/brownnoise.aac";
 
-
-
-
 const Rout = () => {
-
-
-     
-     
-     
-     
-
 
 
      const open = useSideBarStore((state)=>state.open)
