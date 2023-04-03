@@ -35,10 +35,16 @@ const [update, setUpdate] = useState(true)
                     <Timer
                       settings={settings}
                       setUpdate={setUpdate}
-                      update={update}
+         update={update}
                       currentTask={currentTask}
                     />
-                   
+                    {/* <Timer2
+                      settings={settings}
+                      setUpdate={setUpdate}
+                      update={update}
+                      currentTask={currentTask}
+                    /> */}
+
                     {currentTask === null ? null : (
                       <>
                         <div className=" overflow-hidden      duration-100 transition-all group   w-full  backdrop-blur-md p-1 ">

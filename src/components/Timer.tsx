@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import {TbPlayerPauseFilled} from 'react-icons/tb'
 import { BsFillPlayFill } from "react-icons/bs";
@@ -19,13 +19,21 @@ const Timer = ({
   setUpdate:Dispatch<SetStateAction<boolean>>
   update:boolean
 }) => {
- const session = 60*settings.pomodoroLength
- const ShortBreak = 60 * settings.shortBreakLength;
- const LongBreak = 60 * settings.longBreakLength;
- const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak
-const checkSound = new Audio(check);
-const timetostartSound = new Audio(timetostart);
-
+  const session = useMemo(
+    () => 60 * settings.pomodoroLength,
+    [settings.pomodoroLength]
+  );
+  const ShortBreak = useMemo(
+    () => 60 * settings.shortBreakLength,
+    [settings.shortBreakLength]
+  );
+  const LongBreak = useMemo(
+    () => 60 * settings.longBreakLength,
+    [settings.longBreakLength]
+  );
+  const sessionsNumBeforeLongBreak = settings.numPomodorosBeforeLongBreak;
+  const checkSoundRef = useRef(new Audio(check));
+  const timetostartSoundRef = useRef(new Audio(timetostart));
 
 
 
@@ -75,11 +83,11 @@ const timetostartSound = new Audio(timetostart);
                   setCurrentTask(null);
                   setSessionType("pomodoro");
                   setUpdate(!update);
-                  checkSound.play();
+                  checkSoundRef.current.play();
                   return session;
                 }
               }
-              checkSound.play();
+                  checkSoundRef.current.play();
               setUpdate(!update);
               return LongBreak;
             }
@@ -103,13 +111,13 @@ const timetostartSound = new Audio(timetostart);
                     updateTask(updatedTask);
                     setCurrentTask(null);
                     setSessionType("pomodoro");
-                    checkSound.play();
+                    checkSoundRef.current.play();
                     setUpdate(!update);
                     return session;
                   }
                 }
-                checkSound.play();
-                setUpdate(!update);
+                    checkSoundRef.current.play();              
+                    setUpdate(!update);
                 return ShortBreak;
               }
             }
@@ -118,7 +126,8 @@ const timetostartSound = new Audio(timetostart);
                 clearInterval(intervalId!);
                 setIsRunning(false);
                 setSessionType("pomodoro");
-                timetostartSound.play();
+                timetostartSoundRef.current.play();
+
                 return session;
               }
             }
@@ -129,7 +138,7 @@ const timetostartSound = new Audio(timetostart);
                 setTheNumberOfSessions(0);
 
                 setSessionType("pomodoro");
-                timetostartSound.play();
+                timetostartSoundRef.current.play();
                 return session;
               }
             }
@@ -143,29 +152,39 @@ const timetostartSound = new Audio(timetostart);
 
 
   
-  const handleStart = () => {
-    setIsRunning(true);
-  }
-  const handlePause = () =>{
+  const handleStart = useCallback(() => {
+  setIsRunning(true);
+  }, []) 
+
+
+    const handlePause = useCallback(() => {
      setIsRunning(false);
-    }
-  const handleReset = () => {
+    }, []); 
 
-    if (sessionType === "pomodoro") {
-      setSeconds(session);
-    }
-    if (sessionType === "shortBreak") {
-      setSeconds(ShortBreak);
-    }
-    if (sessionType === "longBreak") {
-      setSeconds(LongBreak);
-    }
-    setIsRunning(false);
-  };
 
-  const minutes = Math.floor(seconds / 60);
-  const formattedSeconds = `${seconds % 60}`.padStart(2, "0");
-  const progressWidth = 100 - (seconds * 100) / session;
+
+        const handleReset = useCallback(() => {
+          if (sessionType === "pomodoro") {
+            setSeconds(session);
+          }
+          if (sessionType === "shortBreak") {
+            setSeconds(ShortBreak);
+          }
+          if (sessionType === "longBreak") {
+            setSeconds(LongBreak);
+          }
+          setIsRunning(false);
+        }, [sessionType, session, ShortBreak, LongBreak]); 
+
+
+  const minutes = useMemo(() => Math.floor(seconds / 60), [seconds]);
+  
+    const formattedSeconds = useMemo(() => `${seconds % 60}`.padStart(2, "0"), [seconds]);
+  const progressWidth = useMemo(
+    () => 100 - (seconds * 100) / session,
+    [seconds]
+  );
+
 
   return (
     <>
